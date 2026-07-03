@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Fraunces", serif;
+    --font-body: "Newsreader", serif;
+    --font-mono: "IBM Plex Mono", monospace;
+  }
+
+  * {
+    @apply border-hairline;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-basalt text-bone font-body antialiased;
+    font-feature-settings: "liga" 1, "kern" 1;
+  }
+
+  ::selection {
+    @apply bg-patina/30 text-bone;
+  }
+
+  /* Respect reduced-motion preferences throughout */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Visible keyboard focus, everywhere */
+  :focus-visible {
+    outline: 1.5px solid theme("colors.patina-bright");
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .hairline-top {
+    @apply border-t border-hairline;
+  }
+  .hairline-bottom {
+    @apply border-b border-hairline;
+  }
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-[0.28em] uppercase text-stone;
+  }
+  .container-tight {
+    @apply mx-auto w-full max-w-content px-6 md:px-10;
+  }
+}
